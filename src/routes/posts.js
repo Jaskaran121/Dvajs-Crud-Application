@@ -39,7 +39,6 @@ class posts extends Component {
           <Link to={{pathname: '/edit',state: {item: {id,userId,title}}}}>
           <Button type="primary">Edit</Button>
           </Link>
-         
         </span>
       )
     },
@@ -74,7 +73,8 @@ const mapStateToProps = state => {
   return {
     getItems: state.posts.getItems,
     deleteItem: state.posts.deleteItem,
-    getDataState:state.posts.items
+    getDataState:state.posts.items,
+    loggingState:state.posts.logging
   };
 };
 

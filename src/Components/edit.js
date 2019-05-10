@@ -87,7 +87,6 @@ const WrappedFormEdit = Form.create({ name: "register" })(
 const mapStateToProps = state =>{
   return{
     postItem:state.posts.editItem,
-    currentItems:state.posts.items
   }
 }
 export default connect(mapStateToProps)(WrappedFormEdit);

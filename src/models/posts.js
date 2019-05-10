@@ -4,11 +4,12 @@ import pathToRegExp from 'path-to-regexp';
 export default {
   namespace: "posts",
   state: {
-    items:[]
+    items:[],
+    logging:false
   },
   reducers: {
     saveItems(state, { payload }) {
-      return { ...state, items:payload };
+      return { ...state, items:payload,logging:true };
     },
     delItem(state,{payload})
     {
@@ -28,7 +29,8 @@ export default {
       console.log(payload);
       const {id} = payload;
       const newStateItems = [...state.items];
-      newStateItems[id-1] = payload;
+      const index = newStateItems.findIndex(item=>item.id===id);
+      newStateItems[index] = payload;
       return{...state,items:newStateItems};
     }
   },
@@ -55,6 +57,7 @@ export default {
 
     *editItem({payload},{call,put}){
       const {data} = yield call(editItem,payload);
+      console.log();
       const combinedData = {id:payload.id,userId:data.userId,title:data.title}
       if(data)
       {
