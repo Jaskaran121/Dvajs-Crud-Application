@@ -1,17 +1,20 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button} from "antd";
 import { connect } from "dva";
 class RegistrationForm extends React.Component {
-  state = {};
+  state = {
+
+  };
 
   handleSubmit = e => {
-    e.preventDefault();
+   e.preventDefault();
+    console.log(this.props.form);
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        //console.log("Received values of form: ", values);
+       console.log("Received values of form: ", values);
        this.props.dispatch({type:"posts/postItem",payload:values});
-        
+       return values;
       }
     });
   };
@@ -71,8 +74,6 @@ class RegistrationForm extends React.Component {
           <Button type="primary" htmlType="submit">
             Register
           </Button>
-          
-          
         </Form.Item>
       </Form>
     );

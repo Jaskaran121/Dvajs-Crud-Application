@@ -1,5 +1,5 @@
 import React from "react";
-import {Router, Route,Switch} from "dva/router";
+import {Router, Route,Switch,Redirect} from "dva/router";
 
 import Posts from "./routes/posts";
 import WrappedForm from "./Components/form";

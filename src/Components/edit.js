@@ -2,6 +2,8 @@ import React from "react";
 import "antd/dist/antd.css";
 import { Form, Input, Button } from "antd";
 import { connect } from "dva";
+import Posts from '../routes/posts';
+import {Redirect} from "dva/router";
 class EditForm extends React.Component {
   state = {};
 
@@ -9,8 +11,9 @@ class EditForm extends React.Component {
     e.preventDefault();
     //console.log(this.props.location.state.item);
     this.props.form.validateFieldsAndScroll((err, values) => {
-        const id = this.props.location.state.item.id;
-       const item = {id,...values};
+      
+      const id = this.props.location.state.item.id;
+      const item = {id,...values};
       if (!err) {
       //console.log("Received values of form: ", item);
        this.props.dispatch({type:"posts/editItem",payload:item});
@@ -44,7 +47,15 @@ class EditForm extends React.Component {
         }
       }
     };
-    const {userId,title} = this.props.location.state.item;
+    
+  
+    try {
+      var {userId,title} = this.props.location.state.item;
+    } catch(e)
+    {
+        return <Redirect to='/'  />;
+    }
+    
     return (
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item label="UserId">

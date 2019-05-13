@@ -4,8 +4,7 @@ import pathToRegExp from 'path-to-regexp';
 export default {
   namespace: "posts",
   state: {
-    items:[],
-    logging:false
+    items:[]
   },
   reducers: {
     saveItems(state, { payload }) {
