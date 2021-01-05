@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "dependencies": {
     "antd": "^3.17.0",
-    "axios": "0.18.0",
+    "axios": "0.21.1",
     "dva": "^2.4.1",
     "path-to-regexp": "^3.0.0",
     "react": "16.8.6",
